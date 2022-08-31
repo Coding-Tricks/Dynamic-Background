@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head lang="en" >
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Linear Gradient </title>
+<style>
+*{
+    margin:0px ;
+    padding:0px;
+}
+#main{
+            
+            
+            background:linear-gradient(45deg,red, blue,green);
+            width:100vw;
+            height: 100vh;
+            display:flex;
+            flex-direction: column;
+            justify-content:center;
+            align-items:center;
+            
+            
+            }
+        #btn{
+            filter: opacity(100%);
+            height: 5vh;
+            width:21vw;
+            background: maroon;
+            border:3px solid maroon;
+            border-radius:13px;
+            text-align:center;
+             color: white;
+             margin: 10px;
+             font-size:1.2rem;
+             
+            }
+               #btn2{
+            display: none;
+            background: maroon;
+            border:3px solid maroon;
+            border-radius:13px;
+            text-align:center;
+             color: white;
+             margin:40px auto;
+             padding:6px;
+             font-size:1.1rem;
+            }
+            
+       
+</style>
+</head>
+<body>
+<div id="main">
+
+<button id="btn">Start</button>
+
+<button id="btn2">Custumize Duration</button>
+</div>
+
+<script>
+
+var heading=document.getElementById ('heading');
+function color()
+{
+var x, y, z;
+var main=document.getElementById('main');
+var btn=document.getElementById('btn');
+        x = Math.floor(Math.random() * 225);
+        y = Math.floor(Math.random() * 225);
+        z = Math.floor(Math.random() * 225);
+//main.style.background=`rgb(${x},${y},${z})`;
+let col;
+col="rgb("+x+","+y+","+y+")";
+return col;
+}
+function deg(){
+    d=Math.floor (Math.random ()*100);
+    return d ;
+}
+
+function play(){
+    col1=color();
+    col2=color();
+    col3=color();
+    d=deg();
+    
+    
+     main.style.background="linear-gradient("+d+"deg,"+col1+","+col2+","+col3+")";
+     
+     main.style.transition="background 1s linear";
+}
+
+var ti,value ;
+var t=1000;
+var btn =document.getElementById('btn');
+
+
+btn.addEventListener ('click',
+function click ()
+{    
+    if(btn.innerHTML=="Start")
+    {
+        btn.style.filter="opacity(00)";
+        btn.style.width="50vw";
+        btn.style.height="50vw";
+        btn.innerHTML="Stop";
+        
+        ti=setInterval(play,t);
+    }
+   else if(btn.innerHTML=="Stop")
+    {    btn.innerHTML="Start";
+        
+        clearInterval(ti);
+    }
+     
+}
+) 
+
+
+btn2.addEventListener('click',
+function run(){
+    value=prompt('Enter the duration for one color (in milliseconds)',1000);
+    t=value;
+
+    
+}
+);
+
+</script>
+</body>
+</html>
